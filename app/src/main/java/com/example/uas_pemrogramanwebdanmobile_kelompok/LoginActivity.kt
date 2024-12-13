@@ -20,21 +20,21 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val txtregis        : TextView  = findViewById(R.id.txtSignup)
-        val editusername    : EditText  = findViewById(R.id.editUsername)
+        val editEmail       : EditText  = findViewById(R.id.editUsername) // Ubah placeholder jadi "Email"
         val editpass        : EditText  = findViewById(R.id.editPassword)
         val btnlogin        : Button    = findViewById(R.id.btnLogin)
 
-        txtregis.setOnClickListener{
+        txtregis.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
         }
 
-        btnlogin.setOnClickListener{
+        btnlogin.setOnClickListener {
             val url: String = AppConfig().ipServer + "/podcastmp3/logindata.php"
             val stringRequest = object : StringRequest(
-                Method.POST,url,
+                Method.POST, url,
                 Response.Listener { response ->
                     val jsonObj = JSONObject(response)
                     if (jsonObj.getBoolean("message")) {
@@ -42,30 +42,28 @@ class LoginActivity : AppCompatActivity() {
 
                         val sharedPreferences = getSharedPreferences("DataUsers", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
-                        editor.putString("Username",editusername.text.toString())
+                        editor.putString("Email", editEmail.text.toString())
                         editor.apply()
 
                         val intent = Intent(this, HomeActivity::class.java)
                         finish()
                         startActivity(intent)
-                    }
-                    else {
+                    } else {
                         Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
-                        editusername.setText("")
+                        editEmail.setText("")
                         editpass.setText("")
-                        editusername.requestFocus()
+                        editEmail.requestFocus()
                     }
-
                 },
                 Response.ErrorListener { error ->
                     Log.e("NetworkError", "Error: ${error.message}", error)
-                    Toast.makeText(this,"Gagal Terhubung", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Gagal Terhubung", Toast.LENGTH_SHORT).show()
                 }
-            ){
-                override fun getParams(): HashMap<String,String>{
-                    val params = HashMap<String,String>()
-                    params["username"]   = editusername.text.toString()
-                    params["password"]   = editpass.text.toString()
+            ) {
+                override fun getParams(): HashMap<String, String> {
+                    val params = HashMap<String, String>()
+                    params["username"] = editEmail.text.toString() // Masih gunakan key "username" karena sesuai logindata.php
+                    params["password"] = editpass.text.toString()
                     return params
                 }
             }
