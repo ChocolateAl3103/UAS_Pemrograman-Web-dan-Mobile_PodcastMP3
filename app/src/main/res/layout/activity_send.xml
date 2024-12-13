@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FEFEFE"
     tools:context=".SendActivity">
 
     <TextView
@@ -19,7 +21,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/fotoCourse"
+        android:id="@+id/fotoPodcast"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:contentDescription="@string/choose_file"
@@ -28,20 +30,20 @@
         tools:ignore="ImageContrastCheck" />
 
     <EditText
-        android:id="@+id/editJudul"
+        android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/title"
-        android:importantForAutofill="no"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        android:hint="@string/title"
+        android:importantForAutofill="no" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
         <EditText
             android:id="@+id/editDate"
@@ -60,7 +62,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editDeskripsi"
+        android:id="@+id/editDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -89,9 +91,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#289197"
         android:text="@string/save"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        android:backgroundTint="#289197" />
 
     <Button
         android:id="@+id/btnUpdate"
@@ -99,9 +101,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#289197"
         android:text="@string/update"
         android:textSize="22sp"
+        android:backgroundTint="#289197"
         android:visibility="gone" />
 
     <Button
@@ -109,8 +111,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:backgroundTint="#289197"
+        android:layout_marginTop="20dp"
         android:text="@string/delete"
         android:textSize="22sp"
         android:visibility="gone" />
