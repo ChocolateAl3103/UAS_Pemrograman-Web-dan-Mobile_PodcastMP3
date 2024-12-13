@@ -19,10 +19,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val txtregis        : TextView = findViewById(R.id.txtSignup)
-        val editusername    : EditText = findViewById(R.id.editUsername)
-        val editpass        : EditText = findViewById(R.id.editPassword)
-        val btnlogin        : Button = findViewById(R.id.btnLogin)
+        val txtregis        : TextView  = findViewById(R.id.txtSignup)
+        val editusername    : EditText  = findViewById(R.id.editUsername)
+        val editpass        : EditText  = findViewById(R.id.editPassword)
+        val btnlogin        : Button    = findViewById(R.id.btnLogin)
 
         txtregis.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java)
@@ -43,8 +43,8 @@ class LoginActivity : AppCompatActivity() {
                         val sharedPreferences = getSharedPreferences("DataUser", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
                         editor.putString("Username",editusername.text.toString())
-                        editor.putString("Level",jsonObj.getString("level"))
                         editor.apply()
+
                         val intent = Intent(this, HomeActivity::class.java)
                         finish()
                         startActivity(intent)

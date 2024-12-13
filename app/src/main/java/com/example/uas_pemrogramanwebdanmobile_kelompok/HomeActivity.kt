@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         btncourse.setOnClickListener{
-            val intent = Intent(this, CoursesActivity::class.java)
+            val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
 
