@@ -22,7 +22,6 @@ class SendActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_send)
 
         imageView   = findViewById(R.id.fotoPodcast)
