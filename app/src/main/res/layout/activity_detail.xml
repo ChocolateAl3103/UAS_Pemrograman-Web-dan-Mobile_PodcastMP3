@@ -13,7 +13,7 @@
         android:id="@+id/textJudul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#289197"
+        android:background="#e64f4f"
         android:fontFamily="cursive"
         android:text="@string/data_podcast"
         android:textAlignment="center"
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/description"
-        android:textColor="#289197"
+        android:textColor="#32db9b"
         android:textSize="25sp"
         android:textStyle="bold" />
 
