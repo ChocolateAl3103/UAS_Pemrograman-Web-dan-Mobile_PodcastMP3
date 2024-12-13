@@ -22,7 +22,7 @@ class MyAdapter(private var context: Context, private var modelArrayList: ArrayL
 
     override fun onBindViewHolder(holder: MyAdapter.ViewHolder, position: Int) {
         val model       = modelArrayList[position]
-        Picasso.get().load(model.image).into(holder.ImageView)
+        Picasso.get().load(model.image).into(holder.imageView)
         holder.textCr.text      = model.title
         holder.textDate.text    = model.date
         holder.textRate.text    = "Rating: %.1f".format(model.rate.toFloat())
@@ -37,7 +37,7 @@ class MyAdapter(private var context: Context, private var modelArrayList: ArrayL
                 putString("rate", model.rate)
             }
 
-            var intent: Intent(context, DetailActivity::class, java)
+            val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("dataPodcast", bundle)
             context.startActivity(intent)
         }
