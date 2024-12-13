@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">PodcastMP3</string>
+
+    //Login Page/Logout Page/Regis Page//
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="textlogin">PODCASTMP3</string>
     <string name="textregis">REGISTRASI</string>
-    <string name="linkRegistrasi">Don't have an account? Sign Up Now!</string>
+    <string name="linkRegistrasi">Don\'t have an account? Sign Up Now!</string>
     <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="fullname">Fullname</string>
