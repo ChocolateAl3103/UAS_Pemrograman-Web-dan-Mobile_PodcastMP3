@@ -3,7 +3,6 @@ package com.example.uas_pemrogramanwebdanmobile_kelompok
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.ColorSpace
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class MyAdapter(private var context: Context, private var modelArrayList: ArrayList<ColorSpace.Model>, private var stat: String): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(private var context: Context, private var modelArrayList: ArrayList<Model>, private var stat: String): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     @SuppressLint("InflateParams")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.ViewHolder {
         val inflater    = LayoutInflater.from(parent.context)
