@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
                         val sharedPreferences = getSharedPreferences("DataUser", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
-                        editor.putString("Username", editusername.text.toString())
+                        editor.putString("Email", editusername.text.toString()) // Ganti dengan "Email" karena tidak ada "username"
                         editor.apply()
 
                         val intent = Intent(this, HomeActivity::class.java)
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
             ) {
                 override fun getParams(): HashMap<String, String> {
                     val params = HashMap<String, String>()
-                    params["username"] = editusername.text.toString()
+                    params["email"] = editusername.text.toString()  // Gunakan "email" sebagai parameter
                     params["password"] = editpass.text.toString()
                     return params
                 }

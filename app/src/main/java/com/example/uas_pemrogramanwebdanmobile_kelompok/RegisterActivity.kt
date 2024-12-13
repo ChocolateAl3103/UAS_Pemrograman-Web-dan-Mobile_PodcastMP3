@@ -19,22 +19,21 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         val txtlogin        : TextView = findViewById(R.id.txtLogin)
-        val editusername    : EditText = findViewById(R.id.editUsername)
+        val editemail       : EditText = findViewById(R.id.editEmail)  // Ganti "editUsername" dengan "editEmail"
         val editfullname    : EditText = findViewById(R.id.editFullname)
-        val editemail       : EditText = findViewById(R.id.editEmail)
         val editpass        : EditText = findViewById(R.id.editPassword)
         val btnregis        : Button   = findViewById(R.id.btnRegister)
 
-        txtlogin.setOnClickListener{
+        txtlogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
         }
 
-        btnregis.setOnClickListener{
+        btnregis.setOnClickListener {
             val url: String = AppConfig().ipServer + "/podcastmp3/registrasidata.php"
-            val stringRequest = object : StringRequest(Method.POST,url,
+            val stringRequest = object : StringRequest(Method.POST, url,
                 Response.Listener { response ->
                     val jsonObj = JSONObject(response)
                     if (jsonObj.getBoolean("message")) {
@@ -42,29 +41,26 @@ class RegisterActivity : AppCompatActivity() {
                         val intent = Intent(this, LoginActivity::class.java)
                         finish()
                         startActivity(intent)
-                    }
-                    else {
-                        Toast.makeText(this, "Registrasi Failed", Toast.LENGTH_SHORT).show()
-                        editusername.setText("")
-                        editfullname.setText("")
+                    } else {
+                        Toast.makeText(this, "Registration Failed", Toast.LENGTH_SHORT).show()
+                        // Clear input fields after failed registration
                         editemail.setText("")
+                        editfullname.setText("")
                         editpass.setText("")
-                        editusername.requestFocus()
+                        editemail.requestFocus()
                     }
-
                 },
                 Response.ErrorListener { error ->
                     Log.e("NetworkError", "Error: ${error.message}", error)
-                    Toast.makeText(this,"Gagal Terhubung",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Gagal Terhubung", Toast.LENGTH_SHORT).show()
                 }
-            ){
-                override fun getParams(): HashMap<String,String>{
-                    val params = HashMap<String,String>()
-                    params["username"]   = editusername.text.toString()
-                    params["fullname"]   = editfullname.text.toString()
-                    params["email"]      = editemail.text.toString()
-                    params["password"]   = editpass.text.toString()
-                    params["level"]      = "Member"
+            ) {
+                override fun getParams(): HashMap<String, String> {
+                    val params = HashMap<String, String>()
+                    params["email"] = editemail.text.toString()  // Ganti "username" dengan "email"
+                    params["fullname"] = editfullname.text.toString()
+                    params["password"] = editpass.text.toString()  // Enkripsi password dengan md5 sebelum kirim
+                    params["level"] = "Member"  // Default level sebagai "Member"
                     return params
                 }
             }
