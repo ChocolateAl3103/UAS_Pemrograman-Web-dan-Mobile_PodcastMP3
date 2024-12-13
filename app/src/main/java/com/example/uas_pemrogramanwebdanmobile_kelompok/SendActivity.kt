@@ -12,24 +12,24 @@ class SendActivity : AppCompatActivity() {
     private lateinit var bitmap     : Bitmap
     private lateinit var imageView  : ImageView
     private lateinit var title      : EditText
-    private lateinit var date      : EditText
+    private lateinit var date       : EditText
     private lateinit var desc       : EditText
-    private lateinit var rate     : EditText
+    private lateinit var rate       : EditText
     private lateinit var save       : Button
     private lateinit var edit       : Button
     private lateinit var delete     : Button
-    private val cal = Calendar.getInstance()
+    private val cal                 = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_send)
 
-        imageView   = findViewById(R.id.fotoCourse)
-        title       = findViewById(R.id.editJudul)
-        date       = findViewById(R.id.date)
-        desc        = findViewById(R.id.editDeskripsi)
-        rate       = findViewById(R.id.editRate)
+        imageView   = findViewById(R.id.fotoPodcast)
+        title       = findViewById(R.id.editTitle)
+        date        = findViewById(R.id.editDate)
+        desc        = findViewById(R.id.editDescription)
+        rate        = findViewById(R.id.editRate)
         save        = findViewById(R.id.btnSave)
         edit        = findViewById(R.id.btnUpdate)
         delete      = findViewById(R.id.btnDelete)
