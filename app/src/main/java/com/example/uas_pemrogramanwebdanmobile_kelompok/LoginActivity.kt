@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val txtregis        : TextView  = findViewById(R.id.txtSignup)
-        val editnama       : EditText  = findViewById(R.id.editUsername)
+        val editusername    : EditText  = findViewById(R.id.editUsername)
         val editpass        : EditText  = findViewById(R.id.editPassword)
         val btnlogin        : Button    = findViewById(R.id.btnLogin)
 
@@ -40,9 +40,9 @@ class LoginActivity : AppCompatActivity() {
                     if (jsonObj.getBoolean("message")) {
                         Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
 
-                        val sharedPreferences = getSharedPreferences("DataUsers", Context.MODE_PRIVATE)
+                        val sharedPreferences = getSharedPreferences("DataUser", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
-                        editor.putString("Email", editnama.text.toString())
+                        editor.putString("Username", editusername.text.toString())
                         editor.apply()
 
                         val intent = Intent(this, HomeActivity::class.java)
@@ -50,9 +50,9 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
-                        editnama.setText("")
+                        editusername.setText("")
                         editpass.setText("")
-                        editnama.requestFocus()
+                        editusername.requestFocus()
                     }
                 },
                 Response.ErrorListener { error ->
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
             ) {
                 override fun getParams(): HashMap<String, String> {
                     val params = HashMap<String, String>()
-                    params["nama"] = editnama.text.toString()
+                    params["username"] = editusername.text.toString()
                     params["password"] = editpass.text.toString()
                     return params
                 }

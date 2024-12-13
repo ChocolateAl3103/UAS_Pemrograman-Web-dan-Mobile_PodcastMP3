@@ -9,7 +9,7 @@
     <string name="linkRegistrasi">Don\'t have an account? Sign Up Now!</string>
     <string name="email">Email</string>
     <string name="fullname">Fullname</string>
-    <string name="name">Nama</string>
+    <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="logout">Logout</string>
 
