@@ -49,7 +49,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginTop="240dp"
         android:src="@drawable/ic_add"
-        app:backgroundTint="#289197"
+        app:backgroundTint="#32db9b"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"

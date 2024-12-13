@@ -23,7 +23,7 @@
         android:fontFamily="cursive"
         android:text="PODCASTMP3"
         android:textAlignment="center"
-        android:textColor="#6D77FA"
+        android:textColor="#32db9b"
         android:textSize="40sp"
         android:textStyle="bold" />
     
