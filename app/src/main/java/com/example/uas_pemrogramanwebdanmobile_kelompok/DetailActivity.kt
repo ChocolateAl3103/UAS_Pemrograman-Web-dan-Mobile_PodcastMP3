@@ -21,7 +21,7 @@ class DetailActivity : AppCompatActivity() {
         txtdesc     = findViewById(R.id.textDeskripsi)
         txtrate     = findViewById(R.id.textrate)
 
-        val bundle = intent.getBundleExtra("dataCourse")
+        val bundle = intent.getBundleExtra("dataPodcast")
         if (bundle != null) {
             Picasso.get().load(bundle.getString("image")).into(imageView)
             title.text      = bundle.getString("title")

@@ -18,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
         val btnpodcast  : ImageView = findViewById(R.id.menuPodcast)
         val btnhelp     : ImageView = findViewById(R.id.menuHelp)
 
-        val sharedPreferences = getSharedPreferences("DataUser", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("DataUsers", Context.MODE_PRIVATE)
 
         val uname = sharedPreferences.getString("Username","")
         if (uname!=""){

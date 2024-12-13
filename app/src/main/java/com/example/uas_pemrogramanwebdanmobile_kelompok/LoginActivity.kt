@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
                     if (jsonObj.getBoolean("message")) {
                         Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
 
-                        val sharedPreferences = getSharedPreferences("DataUser", Context.MODE_PRIVATE)
+                        val sharedPreferences = getSharedPreferences("DataUsers", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
                         editor.putString("Username",editusername.text.toString())
                         editor.apply()

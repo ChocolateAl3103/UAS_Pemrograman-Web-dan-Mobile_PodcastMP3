@@ -110,7 +110,7 @@ class SendActivity : AppCompatActivity() {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
             val bytes = byteArrayOutputStream.toByteArray()
             val base64Image = Base64.encodeToString(bytes, Base64.DEFAULT)
-            val url: String = AppConfig().ipServer + "/course/send_data.php"
+            val url: String = AppConfig().ipServer + "/podcastmp3/send_data.php"
             val stringRequest = object : StringRequest(
                 Method.POST,url,
                 Response.Listener { response ->
@@ -151,7 +151,7 @@ class SendActivity : AppCompatActivity() {
     }
 
     private fun updateData() {
-        val bundle = intent.getBundleExtra("dataCourse")
+        val bundle = intent.getBundleExtra("dataPodcast")
         if (bundle != null) {
             id = bundle.getString("id")!!
             Picasso.get().load(bundle.getString("image")).into(imageView)
@@ -170,7 +170,7 @@ class SendActivity : AppCompatActivity() {
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
                     val bytes = byteArrayOutputStream.toByteArray()
                     val base64Image = Base64.encodeToString(bytes, Base64.DEFAULT)
-                    val url1: String = AppConfig().ipServer+ "/course/update_dataWithImage.php"
+                    val url1: String = AppConfig().ipServer+ "/podcastmp3/update_dataWithImage.php"
                     val stringRequest = object : StringRequest(Method.POST, url1,
                         Response.Listener { response ->
                             val jsonObj = JSONObject(response)
@@ -199,7 +199,7 @@ class SendActivity : AppCompatActivity() {
                     Volley.newRequestQueue(this).add(stringRequest)
                 }
                 else {
-                    val url2: String = AppConfig().ipServer + "/course/update_data.php"
+                    val url2: String = AppConfig().ipServer + "/podcastmp3/update_data.php"
                     val stringRequest = object : StringRequest(Method.POST,url2,
                         Response.Listener { response ->
                             val jsonObj = JSONObject(response)
@@ -232,7 +232,7 @@ class SendActivity : AppCompatActivity() {
     private fun deleteData() {
         MaterialAlertDialogBuilder(this).setTitle("Delete").setMessage("Yakin hapus?")
             .setPositiveButton("Delete"){_,_->
-                val url: String = AppConfig().ipServer + "/course/delete_data.php"
+                val url: String = AppConfig().ipServer + "/podcastmp3/delete_data.php"
                 val strReq = object : StringRequest(Method.POST,url, Response.Listener { response ->
                     try {
                         val jsonObj = JSONObject(response)
