@@ -6,7 +6,10 @@ import android.content.Intent
 import android.graphics.ColorSpace
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -36,8 +39,24 @@ class MyAdapter(private var context: Context, private var modelArrayList: ArrayL
             }
 
             var intent: Intent(context, DetailActivity::class, java)
-            intent.putExtra("dataPodcast")
-
+            intent.putExtra("dataPodcast", bundle)
+            context.startActivity(intent)
         }
+    }
+
+    override fun getItemCount(): Int {
+        return modelArrayList.size
+    }
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var textCr      : TextView  = itemView.findViewById(R.id.titleCr)
+        var textDate    : TextView  = itemView.findViewById(R.id.tgl)
+        var textRate    : TextView  = itemView.findViewById(R.id.rate)
+        var imageView   : ImageView = itemView.findViewById(R.id.logoIv)
+    }
+
+    fun setFilteredList(modelArrayList: ArrayList<Model>) {
+        this.modelArrayList = modelArrayList
+        notifyDataSetChanged()
     }
 }

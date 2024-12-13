@@ -22,7 +22,7 @@ class DetailActivity : AppCompatActivity() {
         imageView   = findViewById(R.id.imgCourse)
         txtdate     = findViewById(R.id.textDate)
         txtdesc     = findViewById(R.id.textDeskripsi)
-        txtrate    = findViewById(R.id.textrate)
+        txtrate     = findViewById(R.id.textrate)
 
         val bundle = intent.getBundleExtra("dataCourse")
         if (bundle != null) {
