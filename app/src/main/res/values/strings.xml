@@ -1,31 +1,33 @@
 <resources>
     <string name="app_name">PodcastMP3</string>
 
-    //Login Page/Logout Page/Regis Page//
+    <string name="textlogin">LOGIN</string>
     <string name="login">Login</string>
-    <string name="password">Password</string>
-    <string name="username">Username</string>
-    <string name="textlogin">PODCASTMP3</string>
+    <string name="linkLogin">Already registered? Login Now!</string>
     <string name="textregis">REGISTRASI</string>
-    <string name="linkRegistrasi">Don\'t have an account? Sign Up Now!</string>
     <string name="register">Register</string>
+    <string name="linkRegistrasi">Don\'t have an account? Sign Up Now!</string>
     <string name="email">Email</string>
     <string name="fullname">Fullname</string>
-    <string name="linkLogin">Already registered? Login Now!</string>
-    <string name="course">Course</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
     <string name="logout">Logout</string>
-    <string name="help">Help/Contact Us</string>
+
+    <string name="course">Course</string>
     <string name="courses">Courses</string>
+    <string name="data_course">Data Course</string>
+    <string name="help">Help/Contact Us</string>
+    <string name="contact_us">Contact Us</string>
+
     <string name="id">ID</string>
     <string name="title">Title</string>
     <string name="image">Image</string>
-    <string name="rate">Rate</string>
     <string name="date">Date</string>
     <string name="description">Description</string>
-    <string name="data_course">Data Course</string>
-    <string name="delete">Delete</string>
-    <string name="save">Save</string>
-    <string name="update">Update</string>
+    <string name="rate">Rate</string>
+
     <string name="choose_file">Choose File</string>
-    <string name="contact_us">Contact Us</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 </resources>
