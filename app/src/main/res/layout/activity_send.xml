@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#289197"
+        android:background="#e64f4f"
         android:fontFamily="cursive"
         android:text="@string/data_podcast"
         android:textAlignment="center"
@@ -93,7 +93,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/save"
         android:textSize="22sp"
-        android:backgroundTint="#289197" />
+        android:backgroundTint="#32db9b" />
 
     <Button
         android:id="@+id/btnUpdate"
