@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FEFEFE"
     tools:context=".DetailActivity">
 
     <TextView
@@ -49,7 +51,7 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:contentDescription="@string/date"
-            android:src="@drawable/icdate" />
+            android:src="@drawable/ic_date" />
 
         <TextView
             android:id="@+id/textDate"
