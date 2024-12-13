@@ -1,27 +1,98 @@
 package com.example.uas_pemrogramanwebdanmobile_kelompok
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import org.json.JSONObject
 
 class SearchActivity : AppCompatActivity() {
-    private lateinit var status         : String
     private lateinit var recyclerView   : RecyclerView
     private lateinit var searchView     : SearchView
-    private var models                  = ArrayList<Model>()
+    private var models                  = ArrayList<ColorSpace.Model>()
     private lateinit var adapter        : MyAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_search)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        displayData()
+
+        val add: FloatingActionButton   = findViewById(R.id.fab)
+        add.visibility  = View.VISIBLE
+        add.setOnClickListener {
+            val intent  = Intent(this,SendActivity::class,java)
+            startActivity(intent)
+        }
+    }
+
+    private fun displayData() {
+        recyclerView                = findViewById(R.id.recyclerView)
+        searchView                  = findViewById(R.id.searchView)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager  = LinearLayoutManager(this)
+
+        val url: String     = AppConfig().ipServer + "/podcastmp3/view_data.php"
+        val stringRequest   = object : StringRequest(Method.POST,url, Response.Listener{response ->
+            val jsonObj     = JSONObject("message")) {
+            val jsonArray   = jsonObj.getJSONArray("data")
+            var model: Model
+            models.clear()
+            for (i in 0 until jsonArray.length()){
+                val item    = jsonArray.getJSONObject(i)
+                model       = Model()
+                model.id    = item.getString("id")
+                model.title = item.getString("title")
+                model.image = AppConfig().ipServer + "/podcastmp3/" + item.getString("image")
+                model.desc  = item.getString("description")
+                model.rate  = item.getString("rate")
+                models.add(model)
+            }
+            adapter = MyAdapter(this, models, "Member")
+            recyclerView.adapter    = adapter
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+                override fun onQuerryTextChange(newText: String?): Boolen {
+                    filterList(newText!!.lowercase())
+                    return true
+                }
+            })
+        } else {
+            Toast.makeText(this,"No Podcast", Toast.LENGTH_SHORT).show()
+        }
+        },
+        Response.ErrorListener { error ->
+            Log.e("NetworkError", "Error: ${error.message}", error)
+            Toast.makeText(this, "Gagal Terhubung", Toast.LENGTH_SHORT).show()
+        }) {}
+        Volley.newRequestQueue(this).add(stringRequest)
+    }
+
+
+    private fun filterList(query: String?) {
+        if (query != null) {
+            val filteredList    = ArrayList<Model>()
+            for (i in models) {
+                if (i.title.lowercase(Locale.ROOT).contains(query)) {
+                    filteredList.add(i)
+                }
+            }
+            if (filteredList.isEmpty()) {
+                Toast.makeText(this, "Data not found", Toast.LENGTH_SHORT).show()
+            } else {
+                adapter.setFilteredList(filteredList)
+            }
         }
     }
 }
