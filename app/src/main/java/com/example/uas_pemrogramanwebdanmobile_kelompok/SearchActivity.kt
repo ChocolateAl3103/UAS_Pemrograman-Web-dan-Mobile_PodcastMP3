@@ -1,18 +1,21 @@
 package com.example.uas_pemrogramanwebdanmobile_kelompok
 
+import android.content.Intent
+import android.graphics.ColorSpace
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONObject
+import java.util.Locale
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var recyclerView   : RecyclerView
@@ -43,42 +46,42 @@ class SearchActivity : AppCompatActivity() {
         val url: String     = AppConfig().ipServer + "/podcastmp3/view_data.php"
         val stringRequest   = object : StringRequest(Method.POST,url, Response.Listener{response ->
             val jsonObj     = JSONObject("message")) {
-            val jsonArray   = jsonObj.getJSONArray("data")
+            val jsonArray = jsonObj.getJSONArray("data")
             var model: Model
             models.clear()
-            for (i in 0 until jsonArray.length()){
-                val item    = jsonArray.getJSONObject(i)
-                model       = Model()
-                model.id    = item.getString("id")
+            for (i in 0 until jsonArray.length()) {
+                val item = jsonArray.getJSONObject(i)
+                model = Model()
+                model.id = item.getString("id")
                 model.title = item.getString("title")
-                model.image = AppConfig().ipServer + "/podcastmp3/" + item.getString("image")
-                model.desc  = item.getString("description")
-                model.rate  = item.getString("rate")
+                model.image = AppConfig().ipServer + "/course/" + item.getString("image")
+                model.desc = item.getString("description")
+                model.rate = item.getString("rate")
                 models.add(model)
             }
-            adapter = MyAdapter(this, models, "Member")
-            recyclerView.adapter    = adapter
+            adapter = MyAdapter(this, models, "Member") // Status tetap diisi, meskipun tidak relevan
+            recyclerView.adapter = adapter
 
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
                 }
-                override fun onQuerryTextChange(newText: String?): Boolen {
+
+                override fun onQueryTextChange(newText: String?): Boolean {
                     filterList(newText!!.lowercase())
                     return true
                 }
             })
         } else {
-            Toast.makeText(this,"No Podcast", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No Courses", Toast.LENGTH_SHORT).show()
         }
         },
-        Response.ErrorListener { error ->
-            Log.e("NetworkError", "Error: ${error.message}", error)
-            Toast.makeText(this, "Gagal Terhubung", Toast.LENGTH_SHORT).show()
-        }) {}
+            Response.ErrorListener { error ->
+                Log.e("NetworkError", "Error: ${error.message}", error)
+                Toast.makeText(this, "Gagal Terhubung", Toast.LENGTH_SHORT).show()
+            }) {}
         Volley.newRequestQueue(this).add(stringRequest)
     }
-
 
     private fun filterList(query: String?) {
         if (query != null) {

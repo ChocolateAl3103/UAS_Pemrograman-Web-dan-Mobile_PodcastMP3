@@ -27,7 +27,7 @@
             android:background="@color/white"
             app:iconifiedByDefault="false"
             app:queryBackground="@android:color/transparent"
-            app:queryHint="Search Podcast" />
+            app:queryHint="Search Course" />
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -42,13 +42,14 @@
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginTop="240dp"
         android:src="@drawable/ic_add"
         app:backgroundTint="#289197"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.957"
