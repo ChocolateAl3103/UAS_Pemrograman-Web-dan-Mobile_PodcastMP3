@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:hint="@string/username"
-                    android:drawableStart="@drawable/icperson"
+                    android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="8dp"
                     android:background="@drawable/custom_edittext" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:hint="@string/password"
-                    android:drawableStart="@drawable/iclock"
+                    android:drawableStart="@drawable/ic_lock"
                     android:drawablePadding="8dp"
                     android:background="@drawable/custom_edittext" />
             </com.google.android.material.textfield.TextInputLayout>
