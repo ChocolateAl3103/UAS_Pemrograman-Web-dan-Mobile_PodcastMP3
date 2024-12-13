@@ -27,7 +27,7 @@
             android:background="@color/white"
             app:iconifiedByDefault="false"
             app:queryBackground="@android:color/transparent"
-            app:queryHint="Search Course" />
+            app:queryHint="Search Podcast" />
 
     </com.google.android.material.card.MaterialCardView>
 
