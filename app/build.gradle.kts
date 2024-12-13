@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.uas_pemrogramanwebdanmobile_kelompok"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.uas_pemrogramanwebdanmobile_kelompok"
