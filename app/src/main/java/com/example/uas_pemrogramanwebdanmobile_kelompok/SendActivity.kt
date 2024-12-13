@@ -1,10 +1,31 @@
 package com.example.uas_pemrogramanwebdanmobile_kelompok
 
+import android.app.DatePickerDialog
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.provider.MediaStore
+import android.util.Base64
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.squareup.picasso.Picasso
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class SendActivity : AppCompatActivity() {
     private var id        = ""
@@ -95,7 +116,7 @@ class SendActivity : AppCompatActivity() {
                 Response.Listener { response ->
                     val jsonObj = JSONObject(response)
                     Toast.makeText(this,jsonObj.getString("message"), Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this,CoursesActivity::class.java)
+                    val intent = Intent(this,SearchActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
@@ -155,7 +176,7 @@ class SendActivity : AppCompatActivity() {
                             val jsonObj = JSONObject(response)
                             Toast.makeText(this, jsonObj.getString("message"), Toast.LENGTH_SHORT).show()
                             resId = 0
-                            val intent = Intent(this, CoursesActivity::class.java)
+                            val intent = Intent(this, SearchActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
@@ -184,7 +205,7 @@ class SendActivity : AppCompatActivity() {
                             val jsonObj = JSONObject(response)
                             Toast.makeText(this,jsonObj.getString("message"),Toast.LENGTH_SHORT).show()
                             resId = 0
-                            val intent = Intent(this, CoursesActivity::class.java)
+                            val intent = Intent(this, SearchActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
@@ -216,7 +237,7 @@ class SendActivity : AppCompatActivity() {
                     try {
                         val jsonObj = JSONObject(response)
                         Toast.makeText(this, jsonObj.getString("message"), Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, CoursesActivity::class.java)
+                        val intent = Intent(this, SearchActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         this.startActivity(intent)
