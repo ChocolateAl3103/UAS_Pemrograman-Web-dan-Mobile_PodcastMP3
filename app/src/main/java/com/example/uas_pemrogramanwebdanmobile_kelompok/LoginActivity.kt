@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val txtregis        : TextView  = findViewById(R.id.txtSignup)
-        val editEmail       : EditText  = findViewById(R.id.editUsername) // Ubah placeholder jadi "Email"
+        val editnama       : EditText  = findViewById(R.id.editUsername)
         val editpass        : EditText  = findViewById(R.id.editPassword)
         val btnlogin        : Button    = findViewById(R.id.btnLogin)
 
@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
                         val sharedPreferences = getSharedPreferences("DataUsers", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
-                        editor.putString("Email", editEmail.text.toString())
+                        editor.putString("Email", editnama.text.toString())
                         editor.apply()
 
                         val intent = Intent(this, HomeActivity::class.java)
@@ -50,9 +50,9 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
-                        editEmail.setText("")
+                        editnama.setText("")
                         editpass.setText("")
-                        editEmail.requestFocus()
+                        editnama.requestFocus()
                     }
                 },
                 Response.ErrorListener { error ->
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
             ) {
                 override fun getParams(): HashMap<String, String> {
                     val params = HashMap<String, String>()
-                    params["username"] = editEmail.text.toString() // Masih gunakan key "username" karena sesuai logindata.php
+                    params["nama"] = editnama.text.toString()
                     params["password"] = editpass.text.toString()
                     return params
                 }
