@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:hint="@string/username"
-                    android:drawableStart="@drawable/icperson"
+                    android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="8dp"
                     android:background="@drawable/custom_edittext" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:hint="@string/fullname"
-                    android:drawableStart="@drawable/icface"
+                    android:drawableStart="@drawable/ic_face"
                     android:drawablePadding="8dp"
                     android:background="@drawable/custom_edittext" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:hint="@string/email"
-                    android:drawableStart="@drawable/icemail"
+                    android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="8dp"
                     android:background="@drawable/custom_edittext" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:hint="@string/password"
-                    android:drawableStart="@drawable/iclock"
+                    android:drawableStart="@drawable/ic_lock"
                     android:drawablePadding="8dp"
                     android:background="@drawable/custom_edittext" />
             </com.google.android.material.textfield.TextInputLayout>
