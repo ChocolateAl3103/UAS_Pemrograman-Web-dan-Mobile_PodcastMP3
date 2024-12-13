@@ -15,7 +15,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         val txtuser     : TextView  = findViewById(R.id.txtUsername)
         val btnlogout   : TextView  = findViewById(R.id.btnLogout)
-        val btncourse   : ImageView = findViewById(R.id.menuCourses)
+        val btnpodcast  : ImageView = findViewById(R.id.menuPodcast)
         val btnhelp     : ImageView = findViewById(R.id.menuHelp)
 
         val sharedPreferences = getSharedPreferences("DataUser", Context.MODE_PRIVATE)
@@ -25,7 +25,7 @@ class HomeActivity : AppCompatActivity() {
             txtuser.text = "Hello, $uname"
         }
 
-        btncourse.setOnClickListener{
+        btnpodcast.setOnClickListener{
             val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
