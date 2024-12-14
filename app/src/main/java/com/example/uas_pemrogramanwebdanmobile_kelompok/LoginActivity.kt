@@ -62,8 +62,8 @@ class LoginActivity : AppCompatActivity() {
             ) {
                 override fun getParams(): HashMap<String, String> {
                     val params = HashMap<String, String>()
-                    params["nama"] = editusername.text.toString()
-                    params["password"] = editpass.text.toString()
+                    params["nama"]      = editusername.text.toString()
+                    params["password"]  = editpass.text.toString()
                     return params
                 }
             }
